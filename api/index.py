@@ -13,7 +13,7 @@ class handler(BaseHTTPRequestHandler):
         # Prepare response
         response = {"names": names}
 
-        with open("vercel\vercel-app\public\q-vercel-python.json", "r", encoding="utf-8") as file:
+        with open("./public/q-vercel-python.json", "r", encoding="utf-8") as file:
             marks_data = json.load(file)  # data is now a dictionary
 
         # Print the dictionary
@@ -26,19 +26,13 @@ class handler(BaseHTTPRequestHandler):
                 result.append(matching_entry["marks"])
             else:
                 result.append(None)  # If name is not found, append None
-        response = {
-            'statusCode': 200,
-            'body': json.dumps({"marks": result}),
-            'headers': {
-                'Content-Type': 'application/json',
-            }
-        }
+    
 
         # Send HTTP response
         self.send_response(200)
         self.send_header('Content-type', 'application/json')
         self.end_headers()
-        self.wfile.write(json.dumps(response).encode('utf-8'))
+        self.wfile.write(json.dumps(result).encode('utf-8'))
 
 
     
