@@ -11,7 +11,7 @@ class handler(BaseHTTPRequestHandler):
         names = query_params.get("name", [])
         print(names)
         # Prepare response
-        response = {"names": names}
+        
 
         with open("./public/q-vercel-python.json", "r", encoding="utf-8") as file:
             marks_data = json.load(file)  # data is now a dictionary
@@ -32,7 +32,7 @@ class handler(BaseHTTPRequestHandler):
         self.send_response(200)
         self.send_header('Content-type', 'application/json')
         self.end_headers()
-        self.wfile.write(json.dumps(result).encode('utf-8'))
+        self.wfile.write(json.dumps({'marks':result}).encode('utf-8'))
 
 
     
