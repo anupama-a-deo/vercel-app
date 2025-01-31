@@ -33,7 +33,7 @@ def handler(request):
     # Return the response as JSON
     return {
         'statusCode': 200,
-        'body': json.dumps({"marks": marks}),
+        'body': json.dumps({"marks": matching_entry}),
         'headers': {
             'Content-Type': 'application/json',
         }
