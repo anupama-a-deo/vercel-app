@@ -5,8 +5,8 @@ from urllib.parse import urlparse, parse_qs
 class handler(BaseHTTPRequestHandler):
     def do_GET(self):
 
-        # self.send_response(200)
-        # self.send_header('Content-type', 'application/json')
+        self.send_response(200)
+        self.send_header('Content-type', 'application/json')
         self.send_header('Access-Control-Allow-Origin', '*')  # Allow requests from any domain
         self.send_header('Access-Control-Allow-Methods', 'GET')  # Allow only GET requests
         self.send_header('Access-Control-Allow-Headers', 'Content-Type')  # Allow necessary headers
@@ -36,8 +36,8 @@ class handler(BaseHTTPRequestHandler):
     
 
         # Send HTTP response
-        self.send_response(200)
-        self.send_header('Content-type', 'application/json')
+        #self.send_response(200)
+        #self.send_header('Content-type', 'application/json')
         self.end_headers()
         self.wfile.write(json.dumps({'marks':result}).encode('utf-8'))
 
